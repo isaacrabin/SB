@@ -1,0 +1,64 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div style="height: 100vh; overflow-y: scroll;">
+
+  <div style="padding-left:20px; padding-top:30px;">
+    <h4 class="browse ion-margin-top" style="width: 80%;">Before you proceed <br> take note
+      of the following <br>
+      <span style="color: #0033aa;"><strong>Requirements </strong>
+      </span>
+      <!-- & <span style="color: #0033aa;"><strong>Email Address </strong></span> -->
+    </h4>
+
+    <ul>
+      <li>
+        Have a Kenyan National ID/Passport.
+      </li>
+      <li>
+        Your signature on a piece of paper
+      </li>
+      <li>
+        Tax Exemption Certificate(IF TAX EXEMPT)
+      </li>
+
+      <!-- <li>
+        Registered KRA PIN
+      </li> -->
+      <li  *ngIf="dataStore.auth.bundleCode === '6002'">
+        A copy of Birth Certificate if opening a Child Account
+      </li>
+      <li *ngIf="dataStore.auth.name === 'Diaspora Banking'">
+        Social Security Number (USA residence).
+      </li>
+
+    </ul>
+
+
+
+  </div>
+  <br>
+  <br>
+
+
+  <!-- <div class="uk-margin-medium-bottom uk-margin-small-left uk-margin-small-right uk-margin-large-top">
+    <ion-button expand="block" shape="round" (click)="proceed()">
+      Continue
+    </ion-button>
+  </div> -->
+
+  <div class="uk-margin-medium-bottom uk-margin-small-left uk-margin-small-right uk-margin-large-top">
+    <ion-button mode="ios" type="submit" routerLink="/onboarding/auth"
+    expand="block"
+    fill="solid"
+    shape="round">
+    {{ loader.loading ? '' : 'Continue'}}
+    <ion-spinner *ngIf="loader.loading" name="dots" color="light"></ion-spinner>
+  </ion-button>
+  </div>
+</div>

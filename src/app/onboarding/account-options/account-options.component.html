@@ -1,0 +1,46 @@
+
+  <div class="content">
+    <div style="padding-left:20px; padding-top:10px;" >
+      <h4 class="browse" style="width: 80%;">Proceed to select the SBGS
+          <span style="color: #0033aa;"><strong>Account Type</strong>
+          </span> to open <br />
+          <h4>Multiple selection is allowed</h4>
+      </h4>
+    </div>
+
+      <swiper-container #swiper pagination="true" [options]="swiperOptions"   >
+        <swiper-slide *ngFor="let slide of slides; let i = index;">
+          <ion-card (click)="moveTo()">
+            <ion-img
+            [src]="'./assets/images/self_ac.png' "></ion-img>
+            <ion-card-header>
+              <ion-card-title>{{slide.title}}</ion-card-title>
+              <ion-card-subtitle>{{slide.subtitle}}</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+              Here's a small text description for the card content. Nothing more, nothing less.
+            </ion-card-content>
+          </ion-card>
+          <div
+          class="slide-info">
+        </div>
+        </swiper-slide>
+      </swiper-container>
+      <div style="margin-top: 0px;">
+        <ion-button  mode="ios" type="submit"
+        expand="block"
+        fill="solid"
+        shape="round">
+        {{ loader.loading ? '' : 'Continue'}}
+        <ion-spinner *ngIf="loader.loading" name="dots" color="light"></ion-spinner>
+      </ion-button>
+      </div>
+    </div>
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+<div class="content">
+  <ion-content class="ion-padding">
+    <h4>
+      Fixed Income/Bonds
+    </h4>
+    <ion-item lines="none">
+      <ul>
+        <li>Enable users to perform various types of transactions, including deposits, withdrawals, transfers between accounts, and bill payments.</li>
+        <li>Implement validations to ensure that transactions are processed accurately and securely.</li>
+        <li>Implement validations to ensure that transactions are processed accurately and securely.</li>
+        <li>Implement validations to ensure that transactions are processed accurately and securely.</li>
+      </ul>
+    </ion-item>
+
+
+    <div style="margin-top: 0px;">
+      <ion-button  mode="ios" type="submit"
+     (click)="selectProduct()"
+      expand="block"
+      fill="solid"
+      shape="round">
+      {{ loader.loading ? '' : 'Select this Product'}}
+      <ion-spinner *ngIf="loader.loading" name="dots" color="light"></ion-spinner>
+    </ion-button>
+    </div>
+  </ion-content>
+</div>

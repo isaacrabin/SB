@@ -31,8 +31,27 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/theme/variables.scss", "src/global.scss"],
-            "scripts": []
+            "styles": [
+              "src/theme/variables.scss",
+              "./node_modules/intl-tel-input/build/css/intlTelInput.css",
+              "src/global.scss",
+              {
+                "input": "node_modules/uikit/dist/css/uikit.min.css"
+              },
+              {
+                "input": "node_modules/uikit/dist/css/uikit-core.min.css"
+              },
+              {
+                "input": "node_modules/angular-archwizard/styles/archwizard.css"
+              },
+              {
+                "input": "node_modules/ngx-toastr/toastr.css"
+              }
+            ],
+            "scripts": [
+              {"input": "node_modules/uikit/dist/js/uikit.min.js"},
+              {"input": "node_modules/uikit/dist/js/uikit-icons.min.js"}
+            ]
           },
           "configurations": {
             "production": {
@@ -111,8 +130,27 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/theme/variables.scss", "src/global.scss"],
-            "scripts": []
+            "styles": [
+              "src/theme/variables.scss",
+              "./node_modules/intl-tel-input/build/css/intlTelInput.css",
+              "src/global.scss",
+              {
+                "input": "node_modules/uikit/dist/css/uikit.min.css"
+              },
+              {
+                "input": "node_modules/uikit/dist/css/uikit-core.min.css"
+              },
+              {
+                "input": "node_modules/angular-archwizard/styles/archwizard.css"
+              },
+              {
+                "input": "node_modules/ngx-toastr/toastr.css"
+              }
+            ],
+            "scripts": [
+              {"input": "node_modules/uikit/dist/js/uikit.min.js"},
+              {"input": "node_modules/uikit/dist/js/uikit-icons.min.js"}
+            ]
           },
           "configurations": {
             "ci": {
@@ -136,7 +174,8 @@
   "cli": {
     "schematicCollections": [
       "@ionic/angular-toolkit"
-    ]
+    ],
+    "analytics": "34c64507-a631-430d-bf51-97447979b633"
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

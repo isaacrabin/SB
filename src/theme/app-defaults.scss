@@ -1,0 +1,42 @@
+ion-modal>.ion-page,
+ion-modal.auto-height {
+  --height: auto;
+
+  &.bottom {
+    align-items: flex-end;
+  }
+
+  .inner-content {
+    max-height: 80vh;
+    overflow: auto;
+  }
+}
+
+.error-container {
+  .error-message {
+    margin: calc(var(--page-margin) / 2) 0px;
+    display: flex;
+    align-items: center;
+    color: var(--ion-color-danger);
+    font-size: 0.675rem;
+
+    ion-icon {
+      padding-inline-end: calc(var(--page-margin) / 2);
+      flex-shrink: 0;
+    }
+  }
+}
+
+.image-container {
+  height: 200px;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+  justify-content: center;
+
+  img {
+    max-width: max(100%, 200px);
+    object-fit: cover;
+  }
+}

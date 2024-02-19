@@ -1,0 +1,56 @@
+<div class="uk-margin-large-top">
+  <div style="padding-left:20px; padding-top:10px;" >
+    <h4 class="browse" style="width: 80%;">Let's
+        <span style="color: #0033aa;"><strong> verify </strong>
+        </span>the <span style="color: #0033aa;"><strong>OTP</strong>
+        </span> sent to your phone number or email
+
+    </h4>
+  </div>
+
+  <form [formGroup]="otpForm" style="padding: 20px;"
+   novalidate
+  (submit)="otpForm.valid && verifyOtp()">
+  <div style="width: 100%;">
+      <!-- Email Address -->
+      <div>
+          <ion-item lines="none">
+              <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;" >Enter the code here <span
+                      class="uk-text-danger">*</span>
+              </ion-label>
+              <ion-input name="smscode" type="text" formControlName="smsCode" style="padding-inline-start: 10px !important;">
+              </ion-input>
+
+              <span class="contact-info">
+
+                  A code has been sent to this email address
+                  <span class="blue-info">{{ auth.emailAddress }}</span>
+
+                  and phone number: <span class="blue-info">{{ auth.phoneNumber }}</span>
+
+              </span>
+          </ion-item>
+          <div class="validation-error uk-text-danger">
+              <small class="error-message" *ngIf="of['smsCode'].hasError('required') && of['smsCode'].dirty">
+                  <ion-icon name="information-circle-outline"></ion-icon>SMS Code is required
+              </small>
+          </div>
+      </div>
+      <br>
+  </div>
+  <br>
+  <p class="otp-resend">
+      <span (click)="resendCode()">Resend Code</span>
+  </p>
+
+  <div class="uk-margin-medium-bottom uk-margin-small-left uk-margin-small-right uk-margin-large-top">
+    <ion-button mode="ios" type="submit" [disabled]="otpForm.invalid" routerLink="/onboarding/auth"
+    expand="block"
+    fill="solid"
+    shape="round">
+    {{ loader.loading ? '' : 'Continue'}}
+    <ion-spinner *ngIf="loader.loading" name="dots" color="light"></ion-spinner>
+  </ion-button>
+  </div>
+</form>
+</div>

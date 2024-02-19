@@ -1,9 +1,27 @@
 :host {
   --page-margin: calc(var(--app-fair-margin) * 2);
+
+}
+
+.content{
+  color: #222428 !important;
+  overflow-y: scroll;
+  height: 100%;
+
+}
+
+.browse {
+  color: #444444;
+  font-size: rem-calc(25) !important;
+  margin-right: 20%;
+  margin-left: 20px;
+  margin-bottom: 0px !important;
+  margin-bottom: 20px;
 }
 
 swiper-container {
-  height: 100%;
+  height: 70%;
+
 
   &::part(pagination) {
     --swiper-theme-color: var(--ion-color-primary);
@@ -23,13 +41,14 @@ swiper-container {
   swiper-slide {
     height: inherit;
     position: relative;
+    width: 70% !important;
 
     background-position: center center;
     background-repeat: no-repeat;
-    background: var(--linear-background);
+    background: #f3f3f4;
 
     .slide-info {
-      color: white;
+      color:  #222428;
       text-align: center;
       position: absolute;
       left: 0;
@@ -66,4 +85,36 @@ swiper-container {
       }
     }
   }
+  .modal-sec{
+    --border-top-left-radius: 12px;
+    border-top-right-radius: 50%;
+
+  }
+
+  .d_title{
+    padding-top: 50px !important;
+    font-size: 12px !important;
+    margin: 20px;
+  }
+  ion-item{
+    ul{
+      list-style: none;
+    }
+  }
+
+  .swiper-slide {
+    overflow: visible;
+  }
+
+  .active-slide {
+    transform: scale(1.2); /* Zoom effect on active slide */
+    z-index: 2; /* Ensure active slide is on top */
+  }
+
+  .next-slide {
+    opacity: 0.5; /* Opacity for next slide */
+    transform: translateX(50%) scale(0.8); /* Translate and scale for peeking effect */
+  }
 }
+
+
