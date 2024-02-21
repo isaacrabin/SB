@@ -25,6 +25,14 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+@import "swiper/scss";
+@import "@ionic/angular/css/ionic-swiper";
+@import "swiper/scss/autoplay";
+@import "swiper/scss/keyboard";
+@import "swiper/scss/pagination";
+@import "swiper/scss/scrollbar";
+@import "swiper/scss/zoom";
+
 
 
 /* EXTRA GLOBAL STYLES */
@@ -171,6 +179,8 @@ ion-button[type=submit] {
 }
 
 
+
+
 /* Transparent standard */
 ion-toolbar {
   --background: transparent;
@@ -293,4 +303,19 @@ height: 100% !important;
   align-items: center;
  }
 
+}
+
+::ng-deep ion-input .label-text{
+  color: orange !important;
+}
+
+/* Hide scrollbar for WebKit-based browsers */
+::-webkit-scrollbar {
+  display: none;
+  // width: 4px;
+}
+
+/* Customize scrollbar track */
+::-webkit-scrollbar-track {
+  // background-color: orange; /* Set scrollbar track color */
 }

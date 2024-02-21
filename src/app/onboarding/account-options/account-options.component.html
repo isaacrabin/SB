@@ -8,7 +8,7 @@
       </h4>
     </div>
 
-      <swiper-container #swiper pagination="true" [options]="swiperOptions"   >
+      <!-- <swiper-container #swiper pagination="true" [options]="swiperOptions"   >
         <swiper-slide *ngFor="let slide of slides; let i = index;">
           <ion-card (click)="moveTo()">
             <ion-img
@@ -26,17 +26,42 @@
           class="slide-info">
         </div>
         </swiper-slide>
+      </swiper-container> -->
+
+      <swiper-container
+      class="my-thumbs"
+       #swiper (swiperslidechange)="slideDidChange()" pagination="true"  [options]="swiperOptions" [zoom]="true">
+        <swiper-slide lazy="false" *ngFor="let slide of slides; let i = index;" (ionSlideDidChange)="slideDidChange()" (click)="moveTo(i,slide)">
+
+            <ion-card class="swiper-scrollbar swiper-slide-zoomed">
+              <ion-icon *ngIf="i === addedIndex" class="tick-overlay"  name="checkmark-done-outline" size="large" color="light"></ion-icon>
+              <ion-img [src]="'./assets/images/self_ac.png'"></ion-img>
+              <ion-card-header>
+                <ion-card-title>{{slide.title}}</ion-card-title>
+                <ion-card-subtitle>{{slide.subtitle}}</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                Here's a small text description for the card content. Nothing more, nothing less.
+              </ion-card-content>
+            </ion-card>
+
+          <div class="slide-info"></div>
+        </swiper-slide>
       </swiper-container>
-      <div style="margin-top: 0px;">
-        <ion-button  mode="ios" type="submit"
-        expand="block"
-        fill="solid"
-        shape="round">
-        {{ loader.loading ? '' : 'Continue'}}
-        <ion-spinner *ngIf="loader.loading" name="dots" color="light"></ion-spinner>
-      </ion-button>
+      @if(dataValue !==0){
+        <div style="margin-top: 0px;">
+          <ion-button  mode="ios" type="submit"
+          (click)="proceed()"
+          expand="block"
+          fill="solid"
+          shape="round">
+          {{ loader.loading ? '' : 'Continue'+ ('('+dataValue+')')}}
+          <ion-spinner *ngIf="loader.loading" name="dots" color="light"></ion-spinner>
+        </ion-button>
+        </div>
+      }
+
       </div>
-    </div>
 
 
 

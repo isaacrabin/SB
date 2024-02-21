@@ -1,0 +1,36 @@
+.container{
+
+  color: #222428;
+  --height: 100%;
+  width: 100% !important;
+
+  --ion-background-color: #f3f3f4 !important;
+
+
+  .browse {
+    color: #444444;
+    font-size: rem-calc(25) !important;
+    margin-right: 20%;
+    margin-left: 20px;
+    margin-bottom: 40px;
+  }
+
+  .ngx-intl-tel-input.custom {
+    width: 300px; /* Adjust the width as needed */
+  }
+
+
+  ion-button[type=submit] {
+    color: #FCFCFC;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 150%;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    height: 3rem;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+}
+

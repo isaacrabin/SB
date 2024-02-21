@@ -57,4 +57,25 @@ export class JWTInterceptor implements HttpInterceptor {
 
     return base64url.encode(encryptedBuffer);
   }
+
+  decrypt(msg: string) {
+    const key = '$EM8-NAYA?>#9xd2';
+    const iv = 'B0l!nG-4L6TXSwB5';
+
+    // Convert base64url encoded string back to Buffer
+    const encryptedBuffer = Buffer.from(base64url.decode(msg));
+
+    // Initialize AES-CBC mode with the key and IV
+    const keyBytes = aesjs.utils.utf8.toBytes(key);
+    const ivBytes = aesjs.utils.utf8.toBytes(iv);
+    const aesCbc = new aesjs.ModeOfOperation.cbc(keyBytes, ivBytes);
+
+    // Decrypt the encrypted bytes
+    const decryptedBytes = aesCbc.decrypt(encryptedBuffer);
+
+    // Remove padding
+    const decryptedText = aesjs.utils.utf8.fromBytes(aesjs.padding.pkcs7.strip(decryptedBytes));
+
+    return decryptedText;
+}
 }

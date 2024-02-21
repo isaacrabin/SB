@@ -19,18 +19,17 @@
   margin-bottom: 20px;
 }
 
-swiper-container {
-  height: 70%;
+// swiper-container::part(scrollbar) {
+//   background-color: red;
+// }
 
+swiper-container {
+  height: auto;
+  padding-bottom: 40px;
 
   &::part(pagination) {
     --swiper-theme-color: var(--ion-color-primary);
-
-    // margin: calc(var(--app-broad-margin)*2.5);
-    // right: 0;
-    // left: unset;
-    // width: unset;
-
+    --swiper-pagination-bottom: 0px;
   }
 
   &::part(bullet) {
@@ -39,13 +38,26 @@ swiper-container {
   }
 
   swiper-slide {
-    height: inherit;
+    height: 100px;
     position: relative;
-    width: 70% !important;
-
+    width: calc(90% - 20px); /* Set width of each slide to 100% minus margins */
     background-position: center center;
     background-repeat: no-repeat;
     background: #f3f3f4;
+    transition: transform 0.3s ease; /* Transition effect for each slide */
+    transform: scale(1);
+
+
+
+    &.swiper-slide-active {
+    /* Zoom effect for the active slide */
+      height: 100% !important;
+      margin-right: 0px !important;
+      width:90% !important;
+    }
+
+
+
 
     .slide-info {
       color:  #222428;
@@ -68,7 +80,8 @@ swiper-container {
         font-size: 100px;
       }
     }
-    .info-text{
+
+    .info-text {
       font-size: small;
     }
 
@@ -85,36 +98,44 @@ swiper-container {
       }
     }
   }
-  .modal-sec{
-    --border-top-left-radius: 12px;
-    border-top-right-radius: 50%;
 
+  swiper-slide:last-child {
+    margin-right: 0; /* Remove margin for the last slide */
+    margin-left: 0;
   }
 
-  .d_title{
+
+
+
+  .modal-sec {
+    --border-top-left-radius: 12px;
+    border-top-right-radius: 50%;
+  }
+
+  .d_title {
     padding-top: 50px !important;
     font-size: 12px !important;
     margin: 20px;
   }
-  ion-item{
-    ul{
+
+  ion-item {
+    ul {
       list-style: none;
     }
   }
+}
 
-  .swiper-slide {
-    overflow: visible;
-  }
-
-  .active-slide {
-    transform: scale(1.2); /* Zoom effect on active slide */
-    z-index: 2; /* Ensure active slide is on top */
-  }
-
-  .next-slide {
-    opacity: 0.5; /* Opacity for next slide */
-    transform: translateX(50%) scale(0.8); /* Translate and scale for peeking effect */
-  }
+.tick-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 25px; /* Adjust size as needed */
+  height: 25px; /* Adjust size as needed */
+  // background-image: url('./assets/images/tick.png'); /* Path to your tick image */
+  background-size: contain;
+  background-color: green !important;
+  border-radius: 20px;
+  background-repeat: no-repeat;
 }
 
 

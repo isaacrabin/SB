@@ -64,7 +64,7 @@ export class AuthComponent  implements OnInit {
         .verifyID({
           nationalId: idNumber,
           idType: "NATIONAL.ID",
-          phoneNumber:phone?.e164Number,
+          phoneNumber:phone?.e164Number.replace("+", ""),
           emailAddress:emailAddress,
           userType:"SBGS",
           customerCategory:"SBGS"

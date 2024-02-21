@@ -1,0 +1,91 @@
+.actionBtn {
+  font-size: 4em;
+  cursor: pointer;
+}
+
+.snapshot {
+  text-align: center;
+  img {
+    max-width: 800px;
+    max-height: 800px;
+  }
+}
+
+ul.links {
+  padding-bottom: 20px;
+}
+
+#webcam {
+  width: 400px;
+  // height: 400px;
+  transform: translate(-50%, -50%) !important;
+  top: 50%;
+  left: 50%;
+  height: 100vh !important;
+  margin-top: 10px !important;
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black color */
+  z-index: 1; /* Place the overlay above the webcam */
+  pointer-events: none; /* Allow clicks to pass through the overlay */
+}
+
+webcam video {
+
+  outline: 5px solid green;
+  outline-offset: -15px;
+  position: relative;
+}
+
+.actionBtn {
+  font-size: 4em;
+  cursor: pointer;
+}
+
+.snapshot {
+  text-align: center;
+  img {
+    max-width: 800px;
+    max-height: 800px;
+  }
+}
+
+ul.links {
+  padding-bottom: 20px;
+}
+
+#webcam {
+  width: 400px;
+  // height: 400px;
+  transform: translate(-50%, -50%) !important;
+  top: 50%;
+  left: 50%;
+  height: 100vh !important;
+  margin-top: 10px !important;
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black color */
+  z-index: 1; /* Place the overlay above the webcam */
+  pointer-events: none; /* Allow clicks to pass through the overlay */
+}
+
+webcam video {
+  outline: 5px solid green;
+  outline-offset: -15px;
+  position: relative;
+}
+

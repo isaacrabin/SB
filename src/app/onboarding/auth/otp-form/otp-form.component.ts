@@ -2,6 +2,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/_services/api.service';
 import { LoadingService } from 'src/app/_services/loading.service';
@@ -27,7 +28,8 @@ export class OtpFormComponent  implements OnInit {
     public loader: LoadingService,
     private router: Router,
     private apiService: ApiService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private modalCtrl: ModalController
   ) {
     this.otpForm = this.fb.group({
       smsCode: ["", [Validators.required]],
@@ -35,7 +37,7 @@ export class OtpFormComponent  implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.auth)
+
   }
 
    // Verify Sms Code then redirect to the correct step if the user had dropped off at some point
@@ -51,21 +53,22 @@ export class OtpFormComponent  implements OnInit {
             next: (res) => {
             if (res.successful) {
               this.loader.loading = false;
+              this.modalCtrl.dismiss();
                 switch (res.stepCode) {
                   case 100:
-                    this.router.navigate(["/onboarding/sbgs-options"]);
+                    this.router.navigate(["/onboarding/account-options"]);
                     break;
                   case 101:
-                    this.router.navigate(["/onboarding/sbgs-options"]);
+                    this.router.navigate(["/onboarding/account-options"]);
                     break;
                   case 102:
-                    this.router.navigate(["/onboarding/sbgs-options"]);
+                    this.router.navigate(["/onboarding/account-options"]);
                     break;
                   case 103:
-                    this.router.navigate(["/onboarding/sbgs-options"]);
+                    this.router.navigate(["/onboarding/account-options"]);
                     break;
                   case 104:
-                    this.router.navigate(["/onboarding/sbgs-options"]);
+                    this.router.navigate(["/onboarding/account-options"]);
                     break;
                   case 105:
                     this.router.navigate(["/onboarding/preferences"]);

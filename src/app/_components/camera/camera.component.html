@@ -1,0 +1,119 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="end" color="dark">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close-outline" slot="end"></ion-icon>
+        Cancel
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true"  id="webcam">
+  <div class="info-bar">
+    <h5 class="uk-text-center">
+      <span class="browse" *ngIf="side === 'id_front'">
+        Position your phone on portrait mode &
+        Fit the <span><strong>FRONT</strong></span> of your <span><strong>ID</strong></span> within the frame
+      </span>
+      <span class="browse" *ngIf="side === 'id_back'">
+        Position your phone on portrait mode &
+        Fit the <span><strong>BACK</strong></span> of your <span><strong>ID</strong></span> within the frame
+      </span>
+      <span class="browse" *ngIf="side === 'passport'">
+        Position your phone on portrait mode &
+        Fit your <span><strong>PASSPORT</strong></span> within the frame
+      </span>
+      <span class="browse" *ngIf="side === 'signature'">
+        Position your phone on portrait mode &
+        Fit your <span><strong>SIGNATURE</strong></span> within the frame
+      </span>
+      <span class="browse" *ngIf="side === 'selfie'">
+        Position your phone on portrait mode &
+        Fit your <span><strong>FACE</strong></span> within the frame
+      </span>
+      <span class="browse" *ngIf="side === 'birth_cert'">
+        Position your phone on portrait mode &
+        Fit your child's <span><strong>BIRTH CERTIFICATE</strong></span> within the frame
+      </span>
+    </h5>
+  </div>
+   <div class="camera-outline"></div>
+
+  <div (click)="takePicture()" id="container" style="z-index: 2; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+    <img src="assets/images/camre.jpeg" height="100px !important;" style="padding-top: 40px;" alt="">
+
+    <p style="font-size: 18px !important;">
+      <ion-button fill="outline" shape="round" expand="block" mode="md">Tap to prompt camera</ion-button>
+    </p>
+  </div>
+</ion-content>
+
+
+  <div *ngIf="side !== 'selfie'" class="image-overlay">
+  </div>
+
+
+  <div *ngIf="side === 'selfie'" class="selfie-overlay"></div>
+
+  <!-- <div id="cameraPreview" class="cameraPreview">
+
+    <div>
+
+       <video id="webcam" autoplay playsinline width="640" height="480"></video>
+      <webcam [height]="900" [width]="800" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+      [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+      [videoOptions]="videoOptions"
+      [imageQuality]="1"
+      (cameraSwitched)="cameraWasSwitched($event)"
+      (initError)="handleInitError($event)"
+      ></webcam>
+
+      <div class="snapshot" *ngIf="webcamImage">
+        <h2>Nice one!</h2>
+        <img [src]="webcamImage.imageAsDataUrl"/>
+      </div>
+
+      <h4 *ngIf="errors.length > 0">Messages:</h4>
+      <ul *ngFor="let error of errors">
+        <li>{{error | json}}</li>
+      </ul>
+
+       <div style="margin-top: 30vh;" class="ion-margin-top" *ngIf="cameraError">
+        <p class="ion-text-center">Camera permissions Denied. Kindly allow permissions before you continue!</p>
+      </div>
+
+      <canvas id="canvas" class="d-none"></canvas>
+
+      <div *ngIf="side !== 'selfie'" class="image-overlay">
+      </div>
+
+      <div *ngIf="side === 'selfie'" class="selfie-overlay"></div>
+      <ion-button class="btn" (click)="triggerSnapshot()" expand="block" id="capture">
+        <ion-icon name='camera' slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
+
+  </div>
+
+
+
+  <div style="text-align:center; height: 100vh;">
+    <div>
+      <webcam id="webcam" [height]="900" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+       [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)"
+       (initError)="handleInitError($event)"></webcam>
+
+       <div class="overlay" *ngIf="showWebcam"></div>
+
+      <br/>
+      <div class="actionBtn" (click)="triggerSnapshot();" title="Take Picture">📸</div>
+      <div class="actionBtn" (click)="showNextWebcam(true);" title="Switch Camera">🔁</div>
+    </div>
+  </div>
+
+
+  <h4 *ngIf="errors.length > 0">Messages:</h4>
+  <ul *ngFor="let error of errors">
+    <li>{{error | json}}</li>
+  </ul> -->

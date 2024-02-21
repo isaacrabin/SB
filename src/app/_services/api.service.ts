@@ -87,7 +87,7 @@ export class ApiService {
 
   // Get employers
   getEmployers(): Observable<any> {
-    return this.http.get(this.sbgUrl + 'dropdown/employer');
+    return this.http.get(this.baseUrl + 'dropdown/employer');
   }
 
   // Get industries

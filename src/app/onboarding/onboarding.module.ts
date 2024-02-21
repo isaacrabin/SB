@@ -15,6 +15,11 @@ import { DataStoreService } from '../_services/data-store.service';
 import { OtpFormComponent } from './auth/otp-form/otp-form.component';
 import { AccountOptionsComponent } from './account-options/account-options.component';
 import { SelectAccountComponent } from './account-options/select-account/select-account.component';
+import { CameraComponent } from '../_components/camera/camera.component';
+import { WebcamModule } from 'ngx-webcam';
+import { IonicSelectableComponent } from 'ionic-selectable';
+import { LivenessComponent } from './liveness/liveness.component';
+import { SummaryComponent } from './summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -22,18 +27,24 @@ import { SelectAccountComponent } from './account-options/select-account/select-
     DocsRequiredComponent,
     OtpFormComponent,
     AccountOptionsComponent,
-    SelectAccountComponent
+    SelectAccountComponent,
+    CameraComponent,
+    LivenessComponent,
+    SummaryComponent
   ],
   imports: [
     CommonModule,
     IonicModule,
     FormsModule,
+    WebcamModule,
+
 
     ReactiveFormsModule,
     OnboardingRoutingModule,
     NgxIntlTelInputModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    IonicSelectableComponent
   ],
   providers:[ApiService,DataStoreService],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]

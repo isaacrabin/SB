@@ -1,0 +1,141 @@
+<div style="height: 100vh; overflow-y: scroll;">
+  <!-- <div></div> -->
+  <div style="height: 30vh">
+    <div style="padding-left:20px; padding-top:30px; padding-bottom: 20px;">
+      <h4 class="browse ion-margin-top" style="width: 80%;">Please confirm the information below is
+        <span style="color: #0033aa;"><strong>captured correctly.
+          </strong>
+        </span>
+      </h4>
+    </div>
+  </div>
+
+  <div style="height: 70vh;">
+    <div class="uk-container uk-container-xsmall">
+      <div class="uk-autoflow-auto">
+        <div *ngIf="loader?.loading" class="uk-text-center" style="padding-top:30%">
+          <span class="" uk-spinner="ratio: 2"></span>
+          <p>Creating Account...</p>
+        </div>
+        <div *ngIf="!loader?.loading">
+          <!-- Identification -->
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr (click)="editSection('IDENTIFICATION')">
+                <th class="header" ><strong> IDENTIFICATION</strong> </th>
+               <th class="header"><ion-icon name="create-sharp"></ion-icon></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="uk-width-small"><strong>National ID</strong></td>
+                <td class="uk-table-shrink">34425310</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Phone Number</strong></td>
+                <td class="uk-table-shrink">254729176560</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Email Address</strong></td>
+                <td class="uk-table-shrink">mrongogiktek.io</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- Account Preference -->
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr (click)="editSection('ACCOUNT PREFERENCES')">
+                <th class="header"><strong>ACCOUNT PREFERENCES</strong></th>
+                <th class="header"> <ion-icon name="create-sharp"></ion-icon></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="uk-width-small"><strong>Branch</strong></td>
+                <td class="uk-table-shrink">Chiromo</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Country of Residence</strong></td>
+                <td class="uk-table-shrink">Kenya</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Physical Address</strong></td>
+                <td class="uk-table-shrink">Nairobi</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Tax Compliance</strong></td>
+                <td class="uk-table-shrink">FI</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Mobile Wallet</strong></td>
+                <td class="uk-table-shrink">N</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Bank Account</strong></td>
+                <td class="uk-table-shrink">Y</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- Next of Kin -->
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr (click)="editSection('NEXT OF KIN')">
+                <th class="header" ><strong>NEXT OF KIN</strong></th>
+                  <th class="header"> <ion-icon name="create-sharp"></ion-icon> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="uk-width-small"><strong>Name</strong></td>
+                <td class="uk-table-shrink">Isaac Mrongo</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Phone Number</strong></td>
+                <td class="uk-table-shrink">254729176560</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Nature of Relationship</strong></td>
+                <td class="uk-table-shrink">Sister</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- Occupation -->
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr (click)="editSection('OCCUPATION')">
+                <th class="header" ><strong>OCCUPATION</strong> </th>
+                  <th class="header"><ion-icon name="create-sharp"></ion-icon> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="uk-width-small"><strong>Occupation</strong></td>
+                <td class="uk-table-shrink">Software Engineering</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Industry</strong></td>
+                <td class="uk-table-shrink">Techonology</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Employer</strong></td>
+                <td class="uk-table-shrink">Bayers Limited</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Average Monthly Income</strong></td>
+                <td class="uk-table-shrink">10,000 - 12,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <div *ngIf="!loader?.loading"
+        class="uk-margin-medium-bottom uk-margin-small-left uk-small-medium-right uk-margin-small-top">
+        <ion-button (click)="createAccount()" expand="block" mode="ios" shape="round" type="button">
+          Create Account
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</div>
