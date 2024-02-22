@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 import { DocsRequiredComponent } from './docs-required/docs-required.component';
 import { AccountOptionsComponent } from './account-options/account-options.component';
-import { IdentficationComponent } from './new/identfication/identfication.component';
 import { LivenessComponent } from './liveness/liveness.component';
 import { SummaryComponent } from './summary/summary.component';
+import { SuccessComponent } from './success/success.component';
 
 const routes: Routes = [
   {
@@ -30,16 +30,20 @@ const routes: Routes = [
     component: SummaryComponent,
   },
   {
+    path: 'success',
+    component: SuccessComponent,
+  },
+  {
     path: 'liveness',
     component: LivenessComponent,
   },
   {
-    path: 'new-to-bank',
-    loadChildren: () => import('./new/new.module').then(m => m.NewModule)
+    path: 'new',
+    loadChildren: () => import('./new-to-bank/new.module').then(m => m.NewModule)
   },
   {
-    path: 'existing-on-bank',
-    loadChildren: () => import('./exisiting/exisiting.module').then(m => m.ExisitingModule)
+    path: 'existing',
+    loadChildren: () => import('./exisiting-on-t24/exisiting.module').then(m => m.ExisitingModule)
   },
 ];
 

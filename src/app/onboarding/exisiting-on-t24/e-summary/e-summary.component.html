@@ -1,0 +1,88 @@
+<div style="height: 100vh; overflow-y: scroll;">
+  <!-- <div></div> -->
+  <div style="height: 30vh">
+    <div style="padding-left:20px; padding-top:30px; padding-bottom: 20px;">
+      <h4 class="browse ion-margin-top" style="width: 80%;">Please confirm the information below is
+        <span style="color: #0033aa;"><strong>captured correctly.
+          </strong>
+        </span>
+      </h4>
+    </div>
+  </div>
+
+  <div style="height: 70vh;">
+    <div class="uk-container uk-container-xsmall">
+      <div class="uk-autoflow-auto">
+        <div *ngIf="loader?.loading" class="uk-text-center" style="padding-top:30%">
+          <span class="" uk-spinner="ratio: 2"></span>
+          <p>Creating Account...</p>
+        </div>
+        <div *ngIf="!loader?.loading">
+          <!-- Identification -->
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr (click)="editSection('IDENTIFICATION')">
+                <th class="header" ><strong> IDENTIFICATION</strong> </th>
+               <th class="header"><ion-icon name="create-sharp"></ion-icon></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="uk-width-small"><strong>National ID</strong></td>
+                <td class="uk-table-shrink">34425310</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Phone Number</strong></td>
+                <td class="uk-table-shrink">254729176560</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Email Address</strong></td>
+                <td class="uk-table-shrink">mrongogiktek.io</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- Account Preference -->
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr (click)="editSection('ACCOUNT PREFERENCES')">
+                <th class="header"><strong>ACCOUNT PREFERENCES</strong></th>
+                <th class="header"> <ion-icon name="create-sharp"></ion-icon></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="uk-width-small"><strong>Account Type</strong></td>
+                <td class="uk-table-shrink">Equity (CDS Account)</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Source of Funds</strong></td>
+                <td class="uk-table-shrink">Gifts</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Tax Bracket</strong></td>
+                <td class="uk-table-shrink">Tax Exempt</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Dividend Disposal Method</strong></td>
+                <td class="uk-table-shrink">Bank</td>
+              </tr>
+              <tr>
+                <td class="uk-width-small"><strong>Account Number</strong></td>
+                <td class="uk-table-shrink">0904809379743</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+      </div>
+
+      <div *ngIf="!loader?.loading"
+        class="uk-margin-medium-bottom uk-margin-small-left uk-small-medium-right uk-margin-small-top">
+        <ion-button (click)="createAccount()" expand="block" shape="round" type="button">
+          Create Account
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</div>

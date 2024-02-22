@@ -1,0 +1,120 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="container">
+
+<div >
+  <div style="padding-left:20px; padding-top:10px;" >
+    <h4 class="browse" style="width: 80%;">Provide your
+        <span style="color: #0033aa;"><strong>Preferences </strong>
+        </span> information & <span style="color: #0033aa;"><strong>Next of Kin </strong>
+        </span>details
+    </h4>
+  </div>
+
+  <form  [formGroup]="dataForm" style="padding-left: 20px; padding-right: 20px;" (ngSubmit)="savePreference()">
+
+    <div>
+      <ion-item lines="none">
+        <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Source of funds for Investment<span class="uk-text-danger" >*</span>
+        </ion-label>
+        <ionic-selectable formControlName="sourceofInvestment" maxlength="35"  [items]="sourceofInvestmentFunds" itemValueField="name"
+        itemTextField="name"  [canSearch]="true" (onChange)="handleInvestmentSourceChange($event)">
+      </ionic-selectable>
+      </ion-item>
+    </div>
+
+    <div class="uk-margin-small-top">
+      <div class="uk-grid-small uk-child-width-auto uk-grid uk-margin-small-left">
+        <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Select your Tax Bracket  <span class="uk-text-danger" >*</span>
+        </ion-label>
+          <br />
+        <div class="">
+          <label><ion-chip (click)="toggleExempt('YES')" [color]="taxExemptTrue">
+          <ion-icon name="checkmark-outline" *ngIf="taxExemptYes"></ion-icon>
+          <ion-label>TAX EXEMPT</ion-label>
+        </ion-chip></label>
+        <label><ion-chip (click)="toggleExempt('NO')" [color]="taxExemptFalse">
+          <ion-icon name="checkmark-outline" *ngIf="taxExemptNo"></ion-icon>
+          <ion-label>NON-TAX EXEMPT</ion-label>
+        </ion-chip></label>
+        <div style="background: #c0e6f0; border-radius: 8px; padding: 2px;" *ngIf="taxExemptYes">
+          <label class="uk-text-primary uk-margin-small-top">NOTE: You will be required to upload your Tax Exemption Certificate.</label>
+        </div>
+
+      </div>
+      </div>
+    </div>
+
+<div>
+  <ion-item lines="none">
+    <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Payment & Dividend Disposal Method <span class="uk-text-danger" >*</span>
+    </ion-label>
+    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+      <label *ngIf="!accountOption"><input class="uk-radio" value="Yes" type="radio" formControlName="disposalMethod" (click)="disposalChange('WALLET')">
+        MOBILE WALLET</label>
+      <label><input class="uk-radio" value="No" type="radio" formControlName="disposalMethod" (click)="disposalChange('BANK')">
+        BANK</label>
+    </div>
+    <div style="background: #c0e6f0; border-radius: 8px; padding: 2px;" *ngIf="disposalMethodBank">
+      <label class="uk-text-primary uk-margin-small-top">NOTE: A Stanbic Pay As You Go Account will be created for you. Select your prefered Stanbic branch below</label>
+    </div>
+  </ion-item>
+</div>
+
+<div style="margin-left: 15px; margin-right: 15px !important;" *ngIf="this.disposalMethodWallet">
+    <ion-label position="stacked" class="labels" style="font-size: 15px !important;">Phone Number <span class="uk-text-danger">*</span></ion-label>
+    <ngx-intl-tel-input
+    [cssClass]="'custom'"
+    formControlName="mpesaNumber"
+    [preferredCountries]="[CountryISO.Kenya, CountryISO.Uganda, CountryISO.Rwanda]"
+    [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+    [enableAutoCountrySelect]="false"
+    [enablePlaceholder]="true"
+    [searchCountryFlag]="true"
+    [separateDialCode]="true"
+    [selectedCountryISO]="CountryISO.Kenya"
+    ></ngx-intl-tel-input>
+      <div class="validation-error uk-text-danger">
+        <small class="error-message"
+            *ngIf="f['mpesaNumber'].hasError('required') && f['mpesaNumber'].dirty && f['mpesaNumber'].touched">
+            <ion-icon name="information-circle-outline"></ion-icon>Phone number is required
+        </small>
+    </div>
+    </div>
+
+<div *ngIf="this.disposalMethodBank">
+<ion-item lines="none">
+  <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Branch <span class="uk-text-danger" >*</span>
+  </ion-label>
+  <ionic-selectable id="branch" formControlName="branch" [items]="branches" itemValueField="branchCode"
+    itemTextField="branchName" [canSearch]="true">
+  </ionic-selectable>
+
+</ion-item>
+<div class="validation-error uk-text-danger">
+  <small class="error-message" *ngIf="f['branch'].hasError('required') && f['branch'].dirty">
+    <ion-icon name="information-circle-outline"></ion-icon><em>Branch is required</em>
+  </small>
+</div>
+</div>
+
+
+  <div style="margin-top: 30px;">
+    <ion-button [disabled]="loader.loading || dataForm.invalid" mode="ios" type="submit"
+    expand="block"
+    fill="solid"
+    shape="round">
+    {{ loader.loading ? '' : 'Continue'}}
+    <ion-spinner *ngIf="loader.loading" name="dots" color="light"></ion-spinner>
+  </ion-button>
+  </div>
+  </form>
+</div>
+
+</ion-content>

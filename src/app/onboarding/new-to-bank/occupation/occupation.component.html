@@ -1,0 +1,148 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="container">
+
+<div >
+  <div style="padding-left:20px; padding-top:10px;" >
+    <h4 class="browse" style="width: 80%;">Please enter your
+        <span style="color: #0033aa;"><strong>Occupation </strong>
+        </span> details
+    </h4>
+  </div>
+
+  <form  [formGroup]="dataForm" style="padding-left: 20px; padding-right: 20px;" (ngSubmit)="submitOccupationData()">
+    <div>
+      <ion-item lines="none">
+        <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">What's your Occupation?<span class="uk-text-danger" >*</span>
+        </ion-label>
+        <ionic-selectable
+          formControlName="occupation"
+          [items]="occupations"
+          itemValueField="occupationCode"
+          [isEnabled]="true"
+          itemTextField="occupationName"
+          [canSearch]="true"
+          (onChange)="selectionChange($event.value, 'occupation')">
+        </ionic-selectable>
+      </ion-item>
+    </div>
+
+    <div>
+      <ion-item lines="none">
+        <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Choose your Industry<span class="uk-text-danger" >*</span>
+        </ion-label>
+        <ionic-selectable
+          formControlName="industry"
+          [items]="filteredIndustry"
+          itemValueField="industryCode"
+          [isEnabled]="true"
+          itemTextField="industryDescription"
+          [canSearch]="true"
+          (onChange)="selectionChange($event.value, 'industry')">
+        </ionic-selectable>
+      </ion-item>
+    </div>
+
+
+    <div>
+      <ion-item lines="none">
+        <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">What's your Employer's Name?<span class="uk-text-danger" >*</span>
+        </ion-label>
+        <ionic-selectable
+          formControlName="employerName"
+          [items]="employers"
+          itemValueField="companyCode"
+          [isEnabled]="true"
+          itemTextField="companyName"
+          [canSearch]="true"
+          (onChange)="selectionChange($event.value, 'employer')">
+        </ionic-selectable>
+      </ion-item>
+    </div>
+
+    <div *ngIf="showOther">
+      <ion-item lines="none">
+        <ion-label position="stacked" class="labels">Name Of Employer
+          <span class="uk-text-danger">*</span>
+        </ion-label>
+        <ion-input name="otherDescription" maxlength="35" type="text" (keyup)="validateOther($event)"
+          formControlName="otherDescription"></ion-input>
+      </ion-item>
+
+      <div class="validation-error uk-text-danger">
+        <small class="error-message" *ngIf="f['otherDescription'].hasError('pattern') && f['otherDescription'].dirty">
+          <ion-icon name="information-circle-outline"></ion-icon><em>Name Of Employer can’t contain any
+            special characters (!#$%^,.&)</em>
+        </small>
+
+        <small class="error-message" *ngIf="!otherValid && f['employerName'].dirty">
+          <ion-icon name="information-circle-outline"></ion-icon><em>Employer is required</em>
+        </small>
+      </div>
+    </div>
+
+    <div>
+      <ion-item lines="none">
+        <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">What's your Average Monthly Income?<span class="uk-text-danger" >*</span>
+        </ion-label>
+        <ionic-selectable
+          formControlName="monthlyIncome"
+          [items]="incomes"
+          itemValueField="incomeRangeCode"
+          [isEnabled]="true"
+          itemTextField="incomeRangeName"
+          [canSearch]="true"
+          (onChange)="selectionChange($event.value, 'income')">
+        </ionic-selectable>
+      </ion-item>
+    </div>
+    <div>
+      <ion-item lines="none">
+        <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Source of funds for Investment<span class="uk-text-danger" >*</span>
+        </ion-label>
+        <ionic-selectable formControlName="sourceofInvestment" maxlength="35"  [items]="sourceofInvestmentFunds" itemValueField="name"
+        itemTextField="name"  [canSearch]="true" (onChange)="handleInvestmentSourceChange($event)">
+      </ionic-selectable>
+      </ion-item>
+    </div>
+
+          <!-- Other Cource of Income -->
+          <div *ngIf="this.otherSourceOfIncome">
+            <ion-item lines="none">
+              <ion-label position="stacked" class="labels">Specify Other Source of Income <span class="uk-text-danger">*</span>
+              </ion-label>
+              <ion-input name="otherSource" maxlength="35" type="text" formControlName="otherSource">
+              </ion-input>
+            </ion-item>
+            <div class="validation-error uk-text-danger">
+              <small class="error-message"
+                *ngIf="f['otherSource'].hasError('required') && f['otherSource'].dirty">
+                <ion-icon name="information-circle-outline"></ion-icon><em>Source of income is
+                  required</em>
+              </small>
+              <small class="error-message" *ngIf="f['otherSource'].hasError('pattern') && f['otherSource'].dirty">
+                <ion-icon name="information-circle-outline"></ion-icon><em>Source of income can’t contain any
+                  special characters (!#$%^,.&)</em>
+              </small>
+            </div>
+          </div>
+
+  <div style="margin-top: 30px;">
+    <ion-button [disabled]="loader.loading || dataForm.invalid" mode="ios" type="submit"
+    expand="block"
+    fill="solid"
+    shape="round">
+    {{ loader.loading ? '' : 'Continue'}}
+    <ion-spinner *ngIf="loader.loading" name="dots" color="light"></ion-spinner>
+  </ion-button>
+  </div>
+  </form>
+</div>
+
+</ion-content>

@@ -154,7 +154,7 @@ export class LivenessComponent  implements OnInit {
               this.toastr.success("This is a live photo");
               this.loader.detectingFace = false;
 
-              this.saveSelfie({ file: this.selfie.selfieFile });
+              this.saveSelfie({ file: this.dataStore.selfie.selfieFile});
             }
 
             if (res.probability < 0.5) {

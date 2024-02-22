@@ -20,6 +20,9 @@ import { WebcamModule } from 'ngx-webcam';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { LivenessComponent } from './liveness/liveness.component';
 import { SummaryComponent } from './summary/summary.component';
+import { SuccessComponent } from './success/success.component';
+import { LottieComponent, LottieDirective } from 'ngx-lottie';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -30,16 +33,20 @@ import { SummaryComponent } from './summary/summary.component';
     SelectAccountComponent,
     CameraComponent,
     LivenessComponent,
-    SummaryComponent
+    SummaryComponent,
+    SuccessComponent
   ],
   imports: [
     CommonModule,
     IonicModule,
     FormsModule,
     WebcamModule,
+    LottieComponent,
+    LottieDirective,
 
 
     ReactiveFormsModule,
+    ScrollingModule,
     OnboardingRoutingModule,
     NgxIntlTelInputModule,
     ToastrModule.forRoot(),

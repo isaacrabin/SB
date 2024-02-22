@@ -15,6 +15,7 @@ import { TokenInterceptor } from './_helpers/token-grabber.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from './_services/api.service';
+import { provideLottieOptions } from 'ngx-lottie';
 
 
 @NgModule({
@@ -26,7 +27,10 @@ import { ApiService } from './_services/api.service';
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     CookieService,
-    ApiService
+    ApiService,
+    provideLottieOptions({
+      player: () => import('lottie-web'),
+    }),
   ],
   bootstrap: [AppComponent],
 })

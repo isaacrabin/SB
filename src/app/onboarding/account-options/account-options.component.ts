@@ -168,7 +168,7 @@ export class AccountOptionsComponent  implements OnInit {
   }
 
   proceed(){
-    this.router.navigate(["/onboarding/new-to-bank/identification"]);
+    this.router.navigate(["/onboarding/new/identification"]);
   }
 
 

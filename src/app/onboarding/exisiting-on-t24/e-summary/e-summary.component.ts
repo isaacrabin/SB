@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
-import { AfterViewChecked, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/_services/api.service';
@@ -7,11 +7,12 @@ import { DataStoreService } from 'src/app/_services/data-store.service';
 import { LoadingService } from 'src/app/_services/loading.service';
 
 @Component({
-  selector: 'app-summary',
-  templateUrl: './summary.component.html',
-  styleUrls: ['./summary.component.scss'],
+  selector: 'app-e-summary',
+  templateUrl: './e-summary.component.html',
+  styleUrls: ['./e-summary.component.scss'],
 })
-export class SummaryComponent  implements OnInit,AfterViewChecked {
+export class ESummaryComponent  implements OnInit {
+
 
   summary: any;
   auth: any;
@@ -135,6 +136,5 @@ export class SummaryComponent  implements OnInit,AfterViewChecked {
 
 
   }
-
 
 }

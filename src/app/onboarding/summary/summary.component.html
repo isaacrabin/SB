@@ -1,7 +1,7 @@
 <div style="height: 100vh; overflow-y: scroll;">
   <!-- <div></div> -->
-  <div style="height: 30vh">
-    <div style="padding-left:20px; padding-top:30px; padding-bottom: 20px;">
+  <div style="height: auto">
+    <div style="padding-left:20px; padding-top:30px;">
       <h4 class="browse ion-margin-top" style="width: 80%;">Please confirm the information below is
         <span style="color: #0033aa;"><strong>captured correctly.
           </strong>
@@ -132,7 +132,7 @@
 
       <div *ngIf="!loader?.loading"
         class="uk-margin-medium-bottom uk-margin-small-left uk-small-medium-right uk-margin-small-top">
-        <ion-button (click)="createAccount()" expand="block" mode="ios" shape="round" type="button">
+        <ion-button type="submit" (click)="createAccount()" expand="block" mode="ios" shape="round">
           Create Account
         </ion-button>
       </div>

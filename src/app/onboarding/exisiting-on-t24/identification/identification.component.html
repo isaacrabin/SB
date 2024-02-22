@@ -1,0 +1,78 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div class="container">
+  <div style="padding-left:20px; padding-top:10px;" >
+    <h4 class="browse" style="width: 80%;">We need to validate your documents. Please take a photo of your
+      <span style="color: #1833A1;"><strong>Tax Exemption Certificate </strong>
+      </span>
+    </h4>
+  </div>
+
+  <div style="padding-left: 20px; padding-right: 20px;">
+    <div style="height: 25%;">
+
+    <div style="height: 25%;">
+      <div class="uk-container uk-container-xsmall" *ngIf="documentType === 'NATIONAL_ID'">
+        <div class="uk-card uk-card-default uk-card-body  identification-cards" (click)="selectDocType('ID')">
+          <div class="uk-text-center" uk-grid>
+            <div class="uk-width-3-4 uk-flex pass">
+              <ion-img src="assets/images/id.png"></ion-img>
+              <h4 class="browse2 uk-align-left uk-margin-left"><strong>Exemption Certificate</strong></h4>
+          </div>
+            <div class="uk-width-1-4">
+              <span class="uk-align-right" *ngIf="!identification.frontSaved && !identification.backSaved">
+                <ion-icon class="iconSize" name="chevron-forward-outline"></ion-icon>
+              </span>
+              <span class="uk-align-right" *ngIf="identification.frontSaved && identification.backSaved">
+                <ion-icon class="iconSize" style="color: green;" name="checkmark-done-outline"></ion-icon>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="uk-container uk-container-xsmall" *ngIf="documentType === 'PASSPORT_ID'">
+        <div class="uk-card uk-card-default uk-card-body  identification-cards" (click)="selectDocType('PASSPORT')">
+          <div class="uk-text-center" uk-grid>
+            <div class="uk-width-3-4 uk-flex pass">
+                <ion-img src="assets/images/pass.png"></ion-img>
+                <h4 class="browse2 uk-align-left uk-margin-left"><strong>Passport</strong></h4>
+            </div>
+            <div class="uk-width-1-4">
+              <span class="uk-align-right"
+                *ngIf="!loader?.savedPassport && !loader?.savingPassport && !loader?.scanningPassport">
+                <ion-icon class="iconSize" name="chevron-forward-outline"></ion-icon>
+              </span>
+              <span class="uk-align-right" *ngIf="loader?.savingPassport || loader?.scanningPassport"
+                uk-spinner="ratio: 1"></span>
+              <span class="uk-align-right" *ngIf="loader?.savedPassport">
+                <ion-icon class="iconSize" style="color: green;" name="checkmark-done-outline"></ion-icon>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div style="margin-top: 30px;">
+    <ion-button  mode="ios" type="submit"
+    [disabled]="!loader.savedSignature"
+    (click)="proceedToPreferences()"
+    expand="block"
+    fill="solid"
+    shape="round">
+    {{ loader.loading ? '' : 'Continue'}}
+    <ion-spinner *ngIf="loader.loading" name="dots" color="light"></ion-spinner>
+  </ion-button>
+  </div>
+
+
+
+  </div>
+
+</div>

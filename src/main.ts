@@ -4,6 +4,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
+import { provideLottieOptions } from 'ngx-lottie';
+import player from 'lottie-web';
 
 if (environment.production) {
   enableProdMode();
@@ -17,3 +19,8 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   if (environment.production) {
     enableProdMode();
   }
+
+
+  provideLottieOptions({
+    player: () => player,
+  })
