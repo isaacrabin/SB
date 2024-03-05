@@ -67,3 +67,25 @@ swiper-container {
     }
   }
 }
+
+.terms-content {
+  background: #ddd;
+  color: black;
+}
+
+.terms-text {
+  max-height: 100px; /* Example max-height for scrolling */
+  overflow-y: auto;
+}
+
+.terms-text::-webkit-scrollbar {
+  width: 6px; /* Width of the scrollbar */
+}
+
+.terms-text::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+}
+
+.terms-text::-webkit-scrollbar-thumb {
+  background: #000; /* Thumb color */
+}

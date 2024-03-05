@@ -20,7 +20,7 @@ export class IdentificationComponent  implements OnInit {
 
   authForm: FormGroup;
   auth: Auth = {};
-  documentType = "NATIONAL_ID";
+  documentType = "EXCEMPTION_CERT";
   identification: Identification = {};
   router = inject(Router);
 
@@ -81,7 +81,17 @@ export class IdentificationComponent  implements OnInit {
           } else {
             this.toastr.info("Scan Document Type First");
           }
-        } else {
+        } else if (side === "exemption") {
+          this.identification = data.data.data;
+            this.saveImage("exemption", {
+              file: this.identification.taxFile,
+              idType: "",
+              imageType: "EXEMPTION_CERT",
+              match: "",
+              nationalId: "",
+            });
+        }
+        else {
         }
       }
     });
@@ -93,6 +103,10 @@ export class IdentificationComponent  implements OnInit {
       case "ID":
         this.dataStore.identification.documentType = this.documentType;
         this.router.navigate(["/onboarding/new/id-scan"]);
+        break;
+      case "EXEMPTION_CERT":
+        this.dataStore.identification.documentType = this.documentType;
+        this.presentModal("exemption");
         break;
       case "PASSPORT":
         this.dataStore.identification.documentType = this.documentType;
@@ -136,29 +150,29 @@ export class IdentificationComponent  implements OnInit {
         }
 
         break;
-      case "signature":
-        this.loader.savingSignature = true;
+      case "exemption":
+        this.loader.savingCert = true;
 
         try {
           this.apiService.saveImage(payload).subscribe(
             (res) => {
               if (res.successful) {
-                this.loader.savingSignature = false;
-                this.loader.savedSignature = true;
-                this.dataStore.identification.backSaved = true;
+                this.loader.savingCert = false;
+                this.loader.savedCert = true;
+                this.dataStore.identification.taxSaved = true;
               } else {
-                this.loader.savingSignature = false;
+                this.loader.savingCert = false;
                 this.toastr.error(res.message);
               }
             },
             (error) => {
-              this.loader.savingSignature = false;
-              this.toastr.error("Error saving signature try again.");
+              this.loader.savingCert = false;
+              this.toastr.error("Error saving Exemption Certificate  try again.");
             }
           ); // end api call
         } catch (error) {
-          this.loader.savingSignature = false;
-          this.toastr.error("Error saving signature try again.");
+          this.loader.savingCert = false;
+          this.toastr.error("Error saving Exemption Certificate try again.");
         }
 
         break;
@@ -280,7 +294,7 @@ export class IdentificationComponent  implements OnInit {
 
     proceedToPreferences() {
       this.dataStore.identification.documentType = this.documentType;
-      this.router.navigate(["/onboarding/new/preferences"]);
+      this.router.navigate(["/onboarding/existing/summary"]);
     }
 
 

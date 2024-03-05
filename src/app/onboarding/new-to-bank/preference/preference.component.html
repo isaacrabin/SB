@@ -38,7 +38,7 @@
     </ion-item-divider>
     <div>
 
-      <ion-item lines="none">
+      <ion-item lines="none" mode="md">
         <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Country of Residence <span class="uk-text-danger" >*</span>
         </ion-label>
         <ionic-selectable
@@ -62,7 +62,7 @@
       </ion-item>
     </div> -->
     <div>
-      <ion-item lines="none">
+      <ion-item lines="none" mode="md">
           <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Town <span class="uk-text-danger" >*</span>
           </ion-label>
           <ion-input name="text" maxlength="35" type="text" formControlName="town" label="" placeholder="e.g. Nairobi">
@@ -77,7 +77,7 @@
   </div>
 
  <div>
-  <ion-item lines="none">
+  <ion-item lines="none" mode="md">
     <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Street <span class="uk-text-danger" >*</span>
     </ion-label>
     <ion-input label="" formControlName="street" placeholder=""></ion-input>
@@ -90,7 +90,7 @@
  </div>
 
   <div>
-    <ion-item lines="none">
+    <ion-item lines="none" mode="md">
       <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Building <span class="uk-text-danger" >*</span>
       </ion-label>
        <ion-input type="text" formControlName="building" label="" [class.invalid]="!dataForm.controls['building'].valid && (dataForm.controls['building'].dirty)"> </ion-input>
@@ -122,7 +122,7 @@
 
   <!-- SSN -->
   <div>
-    <ion-item lines="none">
+    <ion-item lines="none" mode="md">
       <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Social Security Number <span class="uk-text-danger"></span>
       </ion-label>
       <ion-input name="ssn" type="text" maxlength="15" label="" formControlName="usSocialSecurityNumber"
@@ -131,7 +131,7 @@
   </div>
   <!-- US Postal Code -->
   <div>
-    <ion-item lines="none">
+    <ion-item lines="none" mode="md">
       <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">USA Postal Code <span class="uk-text-danger"></span>
       </ion-label>
       <ion-input name="postalCode" maxlength="35" type="text" label="" formControlName="usPostalCode"></ion-input>
@@ -139,7 +139,7 @@
   </div>
   <!-- US Mailing Address -->
   <div>
-    <ion-item lines="none">
+    <ion-item lines="none" mode="md">
       <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">USA Mailing Address <span class="uk-text-danger"></span>
       </ion-label>
       <ion-input name="mailingAddress" maxlength="35" type="text" label="" formControlName="usMailingAddress">
@@ -179,7 +179,7 @@
 </div>
 
 <div>
-  <ion-item lines="none">
+  <ion-item lines="none" mode="md">
     <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Payment & Dividend Disposal Method <span class="uk-text-danger" >*</span>
     </ion-label>
     <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
@@ -190,6 +190,9 @@
     </div>
     <div style="background: #c0e6f0; border-radius: 8px; padding: 2px;" *ngIf="disposalMethodBank">
       <label class="uk-text-primary uk-margin-small-top">NOTE: A Stanbic Pay As You Go Account will be created for you. Select your prefered Stanbic branch below</label>
+    </div>
+    <div *ngIf="disposalMethodBank">
+      <a href="https://www.stanbicbank.co.ke/kenya/personal/products-and-services/bank-with-us/bank-accounts/pay-as-you-go" target="_blank" style="font-weight: 500;">Learn More...</a> about Stanbic Pay As You Go account.
     </div>
   </ion-item>
 </div>
@@ -215,7 +218,7 @@
     </div>
     </div>
 
-<div *ngIf="this.disposalMethodBank">
+<div *ngIf="this.disposalMethodBank" mode="md">
 <ion-item lines="none">
   <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Branch <span class="uk-text-danger" >*</span>
   </ion-label>
@@ -234,13 +237,13 @@
 <!--Next of Kin Details-->
 <ion-item-divider class="uk-margin-top"  style="color: #0033aa !important; background-color: #c3c7c7; font-weight: 500;">
   <ion-label class="fatca uk-padding-top">
-    <strong>Contact Person Details</strong>
+    <strong>Next of Kin Details</strong>
   </ion-label>
 </ion-item-divider>
 
   <!-- Name-->
   <div>
-    <ion-item lines="none">
+    <ion-item lines="none" mode="md">
       <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Full Name <span class="uk-text-danger"></span>
       </ion-label>
       <ion-input name="nokName" maxlength="35" type="text" label="" formControlName="nokName"></ion-input>
@@ -272,7 +275,7 @@
 
     <!-- Email -->
     <div>
-      <ion-item lines="none">
+      <ion-item lines="none" mode="md">
         <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Email <span class="uk-text-danger"></span>
         </ion-label>
         <ion-input name="nokEmail" maxlength="35" type="text" label="" formControlName="nokEmail"></ion-input>

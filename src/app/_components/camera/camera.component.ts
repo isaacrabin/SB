@@ -167,6 +167,17 @@ export class CameraComponent  implements OnInit {
           data: this.dataStore.child,
         });
         break;
+
+        case 'exemption':
+          this.dataStore.identification.taxBase64 = image.base64String;
+          this.dataStore.identification.taxFile = await this.dataUrlToFile(
+            this.dataStore.identification.taxBase64
+          );
+          this.modalCtrl.dismiss({
+            cancelled: false,
+            data: this.dataStore.identification
+          });
+          break;
       default:
         break;
     }

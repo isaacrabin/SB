@@ -32,6 +32,9 @@ export interface Identification {
   signatureBase64?: string;
   signatureFile?: File;
   signatureSaved?: boolean;
+  taxBase64?: string;
+  taxFile?: File;
+  taxSaved?: boolean;
   nationalId?: string;
 }
 

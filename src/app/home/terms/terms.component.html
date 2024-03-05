@@ -1,0 +1,40 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Terms and Conditions</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="terms-content" scrollY="true">
+  <!-- Your terms and conditions content here -->
+  <div class="terms-text">
+    <!-- Large content for terms and conditions -->
+    The  relationship between the Client and SBG SECURITIES LIMITED is governed by the Laws of Kenya, except where the following terms and conditions apply and subject to any further agreement in writing.
+
+    <br><br>
+    SBGS may upon the Client’s consent and receipt of the Application Form together with all the supporting documentation, open an Investment Account with SBGS.
+    <br><br>
+    SBGS shall only be obliged to maintain the operation of the Investment Account subject to the Client’s express consent, compliance with these Terms and Conditions, any Specific Terms and Conditions, the Laws of Kenya and any other express or implied terms regulating the conduct of Investment Accounts in Kenya.
+    <br><br>
+    The Account will be operated in the name of the Client. SBGS shall require satisfactory proof of the Client’s name, registered address, telephone, fax numbers and email address(s) including changes thereof (if any) and may refuse to act upon the Client’s instructions until these requirements are met.
+    <br><br>
+    SBGS shall in no way be liable for any loss, damage, cost or expense in respect of any order, communication or instruction from the Client which has not been given in writing. SBGS shall not accept and act in accordance with any order, communication or instruction which has not been given in writing by the client.
+    <br><br>
+    All communications shall be deemed delivered whether actually received or not upon the receipt of a clear transmission report in the case of facsimile and telex transmission; upon receipt of a delivery receipt in the case of e-mail transmissions and after five (5) days in the case of pre-paid registered mail where it can be proved that the communication was correctly addressed.
+    <br>
+    <span style="font-weight: bold; color: #0033aa; cursor: pointer;"><a href="https://www.sbgsecurities.co.ke/sbgsecurities/securities/about-us/terms-and-conditions">Read More...</a></span>
+
+    <ion-item lines="none" style="background: #0033aa; ">
+      <ion-label style="color: #fff !important; font-weight: 500;">Accept Terms and Conditions</ion-label>
+      <ion-checkbox [(ngModel)]="termsAccepted" (ionChange)="checkboxChanged()"></ion-checkbox>
+    </ion-item>
+    <!-- <ion-item lines="none" style="background: #0033aa; margin-top: 3px;">
+      <ion-label style="color: #fff !important; font-weight: 500;">Accept Privacy Policy</ion-label>
+      <ion-checkbox [(ngModel)]="termsAccepted" (ionChange)="checkboxChanged()"></ion-checkbox>
+    </ion-item> -->
+  </div>
+
+
+</ion-content>

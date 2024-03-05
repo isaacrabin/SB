@@ -17,7 +17,7 @@
     </h4>
   </div>
 
-  <form  [formGroup]="authForm" style="padding-left: 20px; padding-right: 20px;" (ngSubmit)="verifyID()">
+  <form   [formGroup]="authForm" style="padding-left: 20px; padding-right: 20px;" (ngSubmit)="verifyID()">
     <div style="margin-left: 15px; margin-right: 15px !important;">
 
     <ion-label position="stacked" class="labels" style="font-size: 15px !important;">Phone Number <span class="uk-text-danger">*</span></ion-label>
@@ -42,7 +42,7 @@
 
 
     <div>
-      <ion-item lines="none">
+      <ion-item lines="none" mode="md">
           <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">ID Number <span class="uk-text-danger" >*</span>
           </ion-label>
           <ion-input name="text" maxlength="35" type="text" formControlName="idNumber" label="">
@@ -61,7 +61,7 @@
   </div>
      <!-- Email Address -->
      <div>
-      <ion-item lines="none">
+      <ion-item lines="none" mode="md">
           <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;" >Email Address <span class="uk-text-danger">*</span>
           </ion-label>
           <ion-input name="email" maxlength="35" type="email" formControlName="emailAddress"  label="">

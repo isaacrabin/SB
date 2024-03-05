@@ -54,7 +54,7 @@ export class OtpFormComponent  implements OnInit {
             if (res.successful) {
               this.loader.loading = false;
               this.modalCtrl.dismiss();
-                switch (res.stepCode) {
+                switch (res.stepCode){
                   case 100:
                     this.router.navigate(["/onboarding/account-options"]);
                     break;
@@ -85,11 +85,6 @@ export class OtpFormComponent  implements OnInit {
                   default:
                     break;
                 }
-
-              // }
-              // else{
-              //   this.scanCode = true;
-              // }
 
             } else {
               this.loader.loading = false;

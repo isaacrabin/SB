@@ -9,6 +9,7 @@ import { ApiService } from 'src/app/_services/api.service';
 import { ModalController } from '@ionic/angular';
 import { DataStoreService } from 'src/app/_services/data-store.service';
 import { OtpFormComponent } from './otp-form/otp-form.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -30,6 +31,7 @@ export class AuthComponent  implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     public loader: LoadingService,
     private toastr: ToastrService,
     private apiService: ApiService,
@@ -73,12 +75,12 @@ export class AuthComponent  implements OnInit {
           next: (res) => {
             if (res.successful) {
               this.loader.loading = false;
-              if(res.object.accountExistYN === 'Y'){
+              console.log("Success", res.object.accountExist === 'Y');
+              if(res.object?.accountExistYN === 'Y' || res.object?.accountExist === 'Y'){
                 this.toastr.success(res.object.message);
                 this.auth.existsOnT24 = 'Y';
                 this.otpSent = true;
                 this.validateOtp();
-
               }
               else{
                 this.auth.existsOnT24 = 'N';

@@ -20,7 +20,7 @@
   <form  [formGroup]="dataForm" style="padding-left: 20px; padding-right: 20px;" (ngSubmit)="savePreference()">
 
     <div>
-      <ion-item lines="none">
+      <ion-item lines="none" mode="md">
         <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Source of funds for Investment<span class="uk-text-danger" >*</span>
         </ion-label>
         <ionic-selectable formControlName="sourceofInvestment" maxlength="35"  [items]="sourceofInvestmentFunds" itemValueField="name"
@@ -52,17 +52,20 @@
     </div>
 
 <div>
-  <ion-item lines="none">
+  <ion-item lines="none" mode="md">
     <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Payment & Dividend Disposal Method <span class="uk-text-danger" >*</span>
     </ion-label>
     <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-      <label *ngIf="!accountOption"><input class="uk-radio" value="Yes" type="radio" formControlName="disposalMethod" (click)="disposalChange('WALLET')">
+      <label *ngIf="!this.restrictPaymentMethod"><input class="uk-radio" value="Yes" type="radio" formControlName="disposalMethod" (click)="disposalChange('WALLET')">
         MOBILE WALLET</label>
       <label><input class="uk-radio" value="No" type="radio" formControlName="disposalMethod" (click)="disposalChange('BANK')">
         BANK</label>
     </div>
     <div style="background: #c0e6f0; border-radius: 8px; padding: 2px;" *ngIf="disposalMethodBank">
-      <label class="uk-text-primary uk-margin-small-top">NOTE: A Stanbic Pay As You Go Account will be created for you. Select your prefered Stanbic branch below</label>
+      <label class="uk-text-primary uk-margin-small-top">NOTE: A Stanbic Pay As You Go Account will be created for you. Select your preferred Stanbic branch below.</label>
+    </div>
+    <div *ngIf="disposalMethodBank">
+      <a href="https://www.stanbicbank.co.ke/kenya/personal/products-and-services/bank-with-us/bank-accounts/pay-as-you-go" target="_blank" style="font-weight: 500;">Learn More...</a> about Stanbic Pay As You Go account.
     </div>
   </ion-item>
 </div>
@@ -89,7 +92,7 @@
     </div>
 
 <div *ngIf="this.disposalMethodBank">
-<ion-item lines="none">
+<ion-item lines="none" mode="md">
   <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Branch <span class="uk-text-danger" >*</span>
   </ion-label>
   <ionic-selectable id="branch" formControlName="branch" [items]="branches" itemValueField="branchCode"

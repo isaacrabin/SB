@@ -18,7 +18,7 @@
 
   <form  [formGroup]="dataForm" style="padding-left: 20px; padding-right: 20px;" (ngSubmit)="submitOccupationData()">
     <div>
-      <ion-item lines="none">
+      <ion-item lines="none" mode="md">
         <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">What's your Occupation?<span class="uk-text-danger" >*</span>
         </ion-label>
         <ionic-selectable
@@ -34,7 +34,7 @@
     </div>
 
     <div>
-      <ion-item lines="none">
+      <ion-item lines="none" mode="md">
         <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Choose your Industry<span class="uk-text-danger" >*</span>
         </ion-label>
         <ionic-selectable
@@ -51,7 +51,7 @@
 
 
     <div>
-      <ion-item lines="none">
+      <ion-item lines="none" mode="md">
         <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">What's your Employer's Name?<span class="uk-text-danger" >*</span>
         </ion-label>
         <ionic-selectable
@@ -67,7 +67,7 @@
     </div>
 
     <div *ngIf="showOther">
-      <ion-item lines="none">
+      <ion-item lines="none" mode="md">
         <ion-label position="stacked" class="labels">Name Of Employer
           <span class="uk-text-danger">*</span>
         </ion-label>
@@ -103,7 +103,7 @@
       </ion-item>
     </div>
     <div>
-      <ion-item lines="none">
+      <ion-item lines="none" mode="md">
         <ion-label position="stacked" class="labels" style="transform: translateY(30%) scale(0.75) !important; font-size: 20px !important;">Source of funds for Investment<span class="uk-text-danger" >*</span>
         </ion-label>
         <ionic-selectable formControlName="sourceofInvestment" maxlength="35"  [items]="sourceofInvestmentFunds" itemValueField="name"
@@ -114,7 +114,7 @@
 
           <!-- Other Cource of Income -->
           <div *ngIf="this.otherSourceOfIncome">
-            <ion-item lines="none">
+            <ion-item lines="none" mode="md">
               <ion-label position="stacked" class="labels">Specify Other Source of Income <span class="uk-text-danger">*</span>
               </ion-label>
               <ion-input name="otherSource" maxlength="35" type="text" formControlName="otherSource">

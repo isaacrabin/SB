@@ -18,18 +18,20 @@
     <div style="height: 25%;">
 
     <div style="height: 25%;">
-      <div class="uk-container uk-container-xsmall" *ngIf="documentType === 'NATIONAL_ID'">
-        <div class="uk-card uk-card-default uk-card-body  identification-cards" (click)="selectDocType('ID')">
+      <div class="uk-container uk-container-xsmall" *ngIf="documentType === 'EXCEMPTION_CERT'">
+        <div class="uk-card uk-card-default uk-card-body  identification-cards" (click)="selectDocType('EXEMPTION_CERT')">
           <div class="uk-text-center" uk-grid>
             <div class="uk-width-3-4 uk-flex pass">
               <ion-img src="assets/images/id.png"></ion-img>
               <h4 class="browse2 uk-align-left uk-margin-left"><strong>Exemption Certificate</strong></h4>
           </div>
             <div class="uk-width-1-4">
-              <span class="uk-align-right" *ngIf="!identification.frontSaved && !identification.backSaved">
+              <span class="uk-align-right" *ngIf="!identification.taxSaved && !loader?.savingCert">
                 <ion-icon class="iconSize" name="chevron-forward-outline"></ion-icon>
               </span>
-              <span class="uk-align-right" *ngIf="identification.frontSaved && identification.backSaved">
+              <span class="uk-align-right" *ngIf="loader?.savingCert || loader?.scanningCert"
+              uk-spinner="ratio: 1"></span>
+              <span class="uk-align-right" *ngIf="identification.taxSaved">
                 <ion-icon class="iconSize" style="color: green;" name="checkmark-done-outline"></ion-icon>
               </span>
             </div>
@@ -61,7 +63,7 @@
 
   <div style="margin-top: 30px;">
     <ion-button  mode="ios" type="submit"
-    [disabled]="!loader.savedSignature"
+    [disabled]="!loader.savedCert"
     (click)="proceedToPreferences()"
     expand="block"
     fill="solid"

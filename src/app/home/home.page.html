@@ -13,7 +13,9 @@
           {{slide.subtitle}}
         </p>
 
-        <ion-button routerLink="/onboarding/docs-required" mode="ios"
+
+
+        <ion-button (click)="openTerms()" mode="ios"
           class="slide-info__btn ion-margin-bottom uk-margin-large-top"
           fill="solid" expand="block" shape="round"> Proceed to Create Account
         </ion-button>
@@ -24,13 +26,13 @@
           View Te
         </ion-button> -->
 
-        <ng-template #skipBtn>
-          <ion-button mode="ios" routerLink="/onboarding/docs-required" expand="block"
+
+          <!-- <ion-button mode="ios" routerLink="/onboarding/docs-required" expand="block"
             fill="clear"
             shape="round">
             Skip
-          </ion-button>
-        </ng-template>
+          </ion-button> -->
+
 
         <div class="ion-margin-top info-text">
           SBG Securities Limited is licensed and regulated by the Capital Markets Authority of Kenya.

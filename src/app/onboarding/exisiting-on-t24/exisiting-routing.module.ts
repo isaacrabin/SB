@@ -14,7 +14,7 @@ const routes: Routes = [
     component: SummaryComponent,
   },
   {
-    path: 'identidication',
+    path: 'identification',
     component: IdentificationComponent,
   },
 ];

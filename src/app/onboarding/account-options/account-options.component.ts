@@ -127,23 +127,20 @@ export class AccountOptionsComponent  implements OnInit {
 
     this.subscription = this.storeService.selectedAccountProducts$.subscribe(value => {
       this.dataArray = value;
+      console.log(this.dataArray);
     });
 
    }
 
   ngOnInit() {
-    console.log(this.selectedAccountProductsCount$)
+    // console.log(this.storeService.auth)
   }
 
   ngAfterViewInit(): void {
    }
 
   logIndex(i: number){
-
   }
-
-
-
 
   async moveTo(i: number, product: any) {
     this.addedIndex = i;
@@ -158,18 +155,16 @@ export class AccountOptionsComponent  implements OnInit {
     await modal.present();
   }
 
-  slideDidChange() {
-    console.log('Slide changed');
-    // Additional logic for slide change
-  }
+  slideDidChange(){}
 
-  closeModal(){
-
-  }
+  closeModal(){}
 
   proceed(){
-    this.router.navigate(["/onboarding/new/identification"]);
+    if(this.storeService.auth?.existsOnT24 === 'N'){
+      this.router.navigate(["/onboarding/new/identification"]);
+    }
+    else{
+      this.router.navigate(["/onboarding/existing/preferences"]);
+    }
   }
-
-
 }

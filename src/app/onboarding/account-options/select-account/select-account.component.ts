@@ -26,7 +26,11 @@ export class SelectAccountComponent  implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log(this.product)
+    console.log(this.product)
+  }
+
+  close() {
+    this.modalCtrl.dismiss();
   }
 
   closeModal(){}

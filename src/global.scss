@@ -319,3 +319,22 @@ height: 100% !important;
 ::-webkit-scrollbar-track {
   // background-color: orange; /* Set scrollbar track color */
 }
+
+.terms-text {
+  max-height: 100%; /* Example max-height for scrolling */
+  overflow-y: auto;
+  scrollbar-width: thin; /* "auto" or "thin" depending on browser support */
+}
+
+.terms-text::-webkit-scrollbar {
+  width: 6px; /* Width of the scrollbar */
+}
+
+.terms-text::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+}
+
+.terms-text::-webkit-scrollbar-thumb {
+  background: #888; /* Thumb color */
+}
+

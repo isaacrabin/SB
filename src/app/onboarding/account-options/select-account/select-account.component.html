@@ -1,8 +1,17 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">{{product.title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <div class="content">
   <ion-content class="ion-padding">
-    <h4>
+    <!-- <h4>
       Fixed Income/Bonds
-    </h4>
+    </h4> -->
     <ion-item lines="none">
       <ul>
         <li>Enable users to perform various types of transactions, including deposits, withdrawals, transfers between accounts, and bill payments.</li>

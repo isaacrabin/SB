@@ -6,6 +6,7 @@ import { ModalController, AlertController } from '@ionic/angular';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { CountryISO, SearchCountryField } from 'ngx-intl-tel-input';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/_services/api.service';
 import { DataStoreService } from 'src/app/_services/data-store.service';
 import { LoadingService } from 'src/app/_services/loading.service';
@@ -61,6 +62,10 @@ export class PreferenceComponent  implements OnInit {
   disposalMethodWallet: boolean = false;
   disposalMethodBank: boolean = false;
   residence: any = null;
+  private subscription: Subscription;
+  dataArray: any[] = [];
+
+  restrictPaymentMethod = false;
 
   accountOption:any = null;
   sourceofInvestmentFunds:  SourceofInvestment[];
@@ -79,6 +84,14 @@ export class PreferenceComponent  implements OnInit {
     private modalCtrl: ModalController,
     private alertCtrl: AlertController
   ) {
+
+    this.subscription = this.dataStore.selectedAccountProducts$.subscribe(value => {
+      this.dataArray = value;
+      if(this.dataArray.includes('Fixed Income/Bonds')){
+        this.restrictPaymentMethod = true;
+      }
+  console.log(this.restrictPaymentMethod);
+    });
 
     this.dataForm = this.fb.group({
       mpesaNumber:[""],
@@ -208,6 +221,15 @@ export class PreferenceComponent  implements OnInit {
       this.apiService.saveExistingToBankPreference(payload).subscribe({
         next:(resp) => {
           this.loader.loading = false;
+          this.toastr.success('Preference saved successfully');
+          if(this.taxExemptYes){
+            this.router.navigate(['/onboarding/existing/identification']);
+            return;
+          }
+          this.router.navigate(['/onboarding/existing/summary']);
+
+
+
 
         },
         error:(err) => {

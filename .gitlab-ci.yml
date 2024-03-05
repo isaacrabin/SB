@@ -1,0 +1,79 @@
+image: node:14-alpine
+
+stages:
+  - build
+  - package
+  - deploy
+
+build:
+  stage: build
+  image: node:14-alpine
+  only:
+    - dev
+  script:
+    - npm install -g @angular/cli@9.1.0
+    - npm install
+    #- ng build --prod --aot
+    - ng build
+  artifacts:
+    paths:
+      - www/
+    expire_in: 2 hours
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+
+build_image:
+  stage: package
+  image: docker:stable
+
+  services:
+    - docker:dind
+
+  only:
+    - dev
+  before_script:
+    # docker login asks for the password to be passed through stdin for security
+    # we use $CI_JOB_TOKEN here which is a special token provided by GitLab
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build -t pwa .
+    - docker tag pwa:latest giktekio/sbgs:uat
+    - docker push giktekio/sbgs:uat
+
+    # - docker image pull icr.io/instana/agent:latest
+    # - docker image pull icr.io/instana/leader-elector:0.5.18
+    # - docker tag icr.io/instana/agent:latest giktekio/agent:latest
+    # - docker tag icr.io/instana/leader-elector:0.5.18 giktekio/leader-elector:0.5.18
+    # - docker push giktekio/agent:latest
+    # - docker push giktekio/leader-elector:0.5.18
+
+    # - docker login containers.instana.io -u _ -p aQKRGIwgQ0u7HCDhixiRjw
+    # - docker image pull containers.instana.io/instana/release/agent/static:latest
+    # - docker tag containers.instana.io/instana/release/agent/static:latest giktekio/static:latest
+    # - docker push giktekio/static:latest
+
+
+deploy_master:
+  stage: deploy
+  only: ['dev']
+  # before_script:
+  #   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  #   - eval $(ssh-agent -s)
+  #   - mkdir -p ~/.ssh
+  #   - chmod 700 ~/.ssh
+  #   - chmod 400 $PRIVATE_KEY
+  #   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  #   - apt-get update -y
+  #   - apt-get -y install rsync
+  script:
+    - mkdir -p ~/.ssh
+    - echo "$PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - cat ~/.ssh/id_rsa
+    - chmod 700 ~/.ssh/id_rsa
+    - eval "$(ssh-agent -s)"
+    - ssh-add ~/.ssh/id_rsa
+    - ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
+    - chmod +x ./deploy.sh
+    - bash ./deploy.sh
